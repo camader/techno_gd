@@ -14,7 +14,7 @@ func add_score(points: int) -> void:
 
 func save_high_score() -> void:
 	var scores := load_high_scores()
-	scores.append({"name": player_name, "score": score})
+	scores.append({"name": player_name, "score": score, "character": selected_character})
 	scores.sort_custom(func(a, b): return int(a["score"]) > int(b["score"]))
 	if scores.size() > 10:
 		scores.resize(10)

@@ -104,6 +104,21 @@ func _build_ui() -> void:
 		if i < scores.size() and scores[i] is Dictionary:
 			var entry_name := str(scores[i].get("name", "???"))
 			var entry_score := str(int(scores[i].get("score", 0)))
+			var entry_char := str(scores[i].get("character", ""))
+
+			# Character icon next to player name
+			if entry_char != "":
+				var icon_path := "res://assets/characters/%s_preview.png" % entry_char
+				var tex := load(icon_path)
+				if tex:
+					var icon := TextureRect.new()
+					icon.texture = tex
+					icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+					icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+					icon.custom_minimum_size = Vector2(28, 28)
+					icon.size = Vector2(28, 28)
+					icon.position = Vector2(580, y_pos + 2)
+					add_child(icon)
 
 			# Gold highlight for #1
 			if i == 0:

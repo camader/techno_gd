@@ -7,7 +7,7 @@ var hits_received := 0
 var scored := false
 var jumped_over := false
 var hit_cooldown := 0.0
-var lifetime := 45.0
+var lifetime := 90.0
 var was_falling := false
 var land_count := 0
 
@@ -68,11 +68,7 @@ func _on_body_entered(body: Node) -> void:
 		hit_cooldown = 0.3
 		hits_received += 1
 
-		var hits_needed := 1
-		if log_type == LogType.GREEN or log_type == LogType.GOLD:
-			hits_needed = 2
-
-		if hits_received >= hits_needed:
+		if hits_received >= 1:
 			scored = true
 			var level = get_tree().current_scene
 			if level.has_method("add_score"):

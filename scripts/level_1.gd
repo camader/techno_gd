@@ -6,7 +6,7 @@ extends Node2D
 var spawn_timer := 0.0
 const SPAWN_INTERVAL := 2.8
 
-var lives := 3
+var lives := 5
 var found_cheese := false
 var game_over := false
 var trunks_visited := {}
@@ -23,10 +23,12 @@ var platforms := [
 
 # Tree trunk positions [x, top_y, bottom_y] - connecting platforms
 var trunks := [
-	[150, 560, 670],    # Left side, level 1->2
-	[1100, 410, 560],   # Right side, level 2->3
-	[200, 300, 410],    # Left side, level 3->4
-	[1050, 150, 300],   # Right side, level 4->5
+	[250, 560, 670],    # Left-center, platform 0->1 (shifted inward)
+	[640, 430, 560],    # Center, platform 1->2 (new alternate path)
+	[1000, 410, 560],   # Right side, platform 1->2 (shifted inward)
+	[300, 300, 410],    # Left side, platform 2->3 (shifted inward)
+	[640, 170, 300],    # Center, platform 3->4 (new alternate path)
+	[950, 150, 300],    # Right side, platform 3->4 (shifted inward)
 ]
 
 var stars := []
@@ -261,9 +263,10 @@ func _build_trunks() -> void:
 		add_child(climb_area)
 
 func _on_trunk_entered(_area: Area2D, trunk_index: int) -> void:
-	if trunk_index == 1 and not trunks_visited.has(0):
+	# Cheese bonus for taking alternate routes (center trunks without using edge trunks)
+	if trunk_index == 1 and not trunks_visited.has(0):  # Center 1->2 without left 0->1
 		found_cheese = true
-	elif trunk_index == 3 and not trunks_visited.has(2):
+	elif trunk_index == 4 and not trunks_visited.has(3):  # Center 3->4 without left 2->3
 		found_cheese = true
 	trunks_visited[trunk_index] = true
 

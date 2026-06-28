@@ -295,87 +295,15 @@ func _build_player_sprite() -> void:
 	add_child(container)
 
 func _build_enemy_sprite() -> void:
-	var container := Node2D.new()
-	container.position = Vector2(1100, 400)
-	var s := 3.0
-
-	var body := Polygon2D.new()
-	body.polygon = PackedVector2Array([
-		Vector2(-20 * s, -22.5 * s), Vector2(20 * s, -22.5 * s),
-		Vector2(25 * s, 22.5 * s), Vector2(-25 * s, 22.5 * s),
-	])
-	body.color = Color(0.75, 0.08, 0.08)
-	container.add_child(body)
-
-	var body_hi := Polygon2D.new()
-	body_hi.polygon = PackedVector2Array([
-		Vector2(-15 * s, -19 * s), Vector2(5 * s, -19 * s),
-		Vector2(7 * s, 18 * s), Vector2(-22 * s, 18 * s),
-	])
-	body_hi.color = Color(0.85, 0.15, 0.12)
-	container.add_child(body_hi)
-
-	var head := Polygon2D.new()
-	head.polygon = PackedVector2Array([
-		Vector2(-12 * s, -44 * s), Vector2(12 * s, -44 * s),
-		Vector2(15 * s, -22.5 * s), Vector2(-15 * s, -22.5 * s),
-	])
-	head.color = Color(0.9, 0.12, 0.08)
-	container.add_child(head)
-
-	var brow_l := Polygon2D.new()
-	brow_l.polygon = PackedVector2Array([
-		Vector2(-10 * s, -40 * s), Vector2(-1 * s, -38 * s),
-		Vector2(-1 * s, -37 * s), Vector2(-10 * s, -38 * s),
-	])
-	brow_l.color = Color(0.3, 0.0, 0.0)
-	container.add_child(brow_l)
-
-	var brow_r := Polygon2D.new()
-	brow_r.polygon = PackedVector2Array([
-		Vector2(1 * s, -38 * s), Vector2(10 * s, -40 * s),
-		Vector2(10 * s, -38 * s), Vector2(1 * s, -37 * s),
-	])
-	brow_r.color = Color(0.3, 0.0, 0.0)
-	container.add_child(brow_r)
-
-	var eye_l := Polygon2D.new()
-	eye_l.polygon = PackedVector2Array([
-		Vector2(-8 * s, -36 * s), Vector2(-2 * s, -36 * s),
-		Vector2(-2 * s, -30 * s), Vector2(-8 * s, -30 * s),
-	])
-	eye_l.color = Color(1, 1, 1)
-	container.add_child(eye_l)
-
-	var eye_r := Polygon2D.new()
-	eye_r.polygon = PackedVector2Array([
-		Vector2(2 * s, -36 * s), Vector2(8 * s, -36 * s),
-		Vector2(8 * s, -30 * s), Vector2(2 * s, -30 * s),
-	])
-	eye_r.color = Color(1, 1, 1)
-	container.add_child(eye_r)
-
-	var pupil_l := Polygon2D.new()
-	pupil_l.polygon = PackedVector2Array([
-		Vector2(-7 * s, -34 * s), Vector2(-4 * s, -34 * s),
-		Vector2(-4 * s, -31 * s), Vector2(-7 * s, -31 * s),
-	])
-	pupil_l.color = Color(0.1, 0.0, 0.0)
-	container.add_child(pupil_l)
-
-	var pupil_r := Polygon2D.new()
-	pupil_r.polygon = PackedVector2Array([
-		Vector2(4 * s, -34 * s), Vector2(7 * s, -34 * s),
-		Vector2(7 * s, -31 * s), Vector2(4 * s, -31 * s),
-	])
-	pupil_r.color = Color(0.1, 0.0, 0.0)
-	container.add_child(pupil_r)
+	var sprite := Sprite2D.new()
+	sprite.texture = load("res://assets/characters/techno/Techno_base.png")
+	sprite.position = Vector2(1100, 390)
+	sprite.scale = Vector2(0.3, 0.3)
+	add_child(sprite)
 
 	var label := Label.new()
 	label.text = "TECHNO"
-	label.position = Vector2(-36, 75)
+	label.position = Vector2(1064, 475)
 	label.add_theme_color_override("font_color", Color(1.0, 0.3, 0.3))
 	label.add_theme_font_size_override("font_size", 16)
-	container.add_child(label)
-
-	add_child(container)
+	add_child(label)

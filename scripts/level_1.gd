@@ -4,7 +4,7 @@ extends Node2D
 @onready var obstacle_container: Node2D = $Obstacles
 
 var spawn_timer := 0.0
-const SPAWN_INTERVAL := 2.8
+const SPAWN_INTERVAL := 3.08
 
 var lives := 5
 var found_cheese := false
@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 	time_remaining -= delta
 	_update_timer_display()
 	if time_remaining <= 0:
-		time_remaining = 160.0
+		time_remaining = 160.0 / 2.0
 		lives -= 1
 		GameState.add_score(-50)
 		_update_lives_display()
@@ -347,27 +347,15 @@ func _build_enemy() -> void:
 	var enemy := StaticBody2D.new()
 	enemy.name = "Enemy"
 
-	var sprite := AnimatedSprite2D.new()
-	sprite.position = Vector2(1120, 140)
-	sprite.scale = Vector2(0.5, 0.5)
-
-	var sprite_frames := SpriteFrames.new()
-	if sprite_frames.has_animation("default"):
-		sprite_frames.remove_animation("default")
-	sprite_frames.add_animation("idle")
-	sprite_frames.set_animation_speed("idle", 12.0)
-	sprite_frames.set_animation_loop("idle", true)
-	for i in range(1, 25):
-		var tex := load("res://assets/characters/techno/idle/idle_%03d.png" % i)
-		if tex:
-			sprite_frames.add_frame("idle", tex)
-	sprite.sprite_frames = sprite_frames
-	sprite.play("idle")
+	var sprite := Sprite2D.new()
+	sprite.texture = load("res://assets/characters/techno/Techno_base.png")
+	sprite.position = Vector2(1165, 93)
+	sprite.scale = Vector2(0.245, 0.245)
 	enemy.add_child(sprite)
 
 	var label := Label.new()
 	label.text = "TECHNO"
-	label.position = Vector2(1085, 72)
+	label.position = Vector2(1086, 20)
 	label.add_theme_color_override("font_color", Color(1.0, 0.3, 0.3))
 	label.add_theme_font_size_override("font_size", 12)
 	enemy.add_child(label)
@@ -424,7 +412,7 @@ func _update_timer_display() -> void:
 	if timer_label:
 		var t := int(max(0, time_remaining))
 		timer_label.text = "Time: %d" % t
-		if time_remaining <= 10:
+		if time_remaining <= 30:
 			timer_label.add_theme_color_override("font_color", Color(1.0, 0.3, 0.3))
 		else:
 			timer_label.add_theme_color_override("font_color", Color(1.0, 1.0, 1.0))
@@ -534,7 +522,7 @@ func player_hit_by_obstacle() -> void:
 	if lives <= 0:
 		_game_over()
 	else:
-		time_remaining = 160.0
+		time_remaining = time_remaining + (160.0 - time_remaining) / 2.0
 		player._respawn()
 
 func _game_over() -> void:
@@ -599,7 +587,8 @@ func _on_goal_reached(body: Node) -> void:
 		set_physics_process(false)
 		player.set_physics_process(false)
 
-		GameState.add_score(100)
+		var time_bonus := int(time_remaining) * lives * 10
+		GameState.add_score(100 + time_bonus)
 		GameState.save_high_score()
 		_update_score_display()
 
@@ -611,11 +600,19 @@ func _on_goal_reached(body: Node) -> void:
 		label.z_index = 50
 		add_child(label)
 
+		var bonus_label := Label.new()
+		bonus_label.text = "Time Bonus: +%d  (%ds × %d lives × 10)" % [time_bonus, int(time_remaining), lives]
+		bonus_label.add_theme_font_size_override("font_size", 28)
+		bonus_label.add_theme_color_override("font_color", Color(0.4, 1.0, 0.4))
+		bonus_label.position = Vector2(470, 320)
+		bonus_label.z_index = 50
+		add_child(bonus_label)
+
 		var score_label := Label.new()
 		score_label.text = "Score: %d" % GameState.score
 		score_label.add_theme_font_size_override("font_size", 32)
 		score_label.add_theme_color_override("font_color", Color(1.0, 0.9, 0.3))
-		score_label.position = Vector2(500, 330)
+		score_label.position = Vector2(500, 355)
 		score_label.z_index = 50
 		add_child(score_label)
 

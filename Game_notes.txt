@@ -1,0 +1,9 @@
+Game notes
+
+Timing between barrels is too small - increased by 10%
+Improve animations
+Move player to front layer - done
+Set score to have a component from the time_remaining when completed, - done
+Move flag platform above techno boss
+Add a boss fight
+Add special abilities - Rockman throws a boulder, volton shots lighting bolts

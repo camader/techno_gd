@@ -7,6 +7,7 @@ const GRAVITY := 800.0
 
 var is_climbing := false
 var climb_areas: int = 0
+var descend_start_y := -1.0
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite
 
@@ -49,15 +50,26 @@ func _physics_process(delta: float) -> void:
 	var climb_input := Input.get_axis("ui_down", "ui_up")
 
 	if is_climbing and climb_areas > 0:
-		set_collision_mask_value(1, false)
+		if climb_input < 0:  # descending
+			if descend_start_y < 0:
+				descend_start_y = position.y
+			if position.y < descend_start_y + 35.0:
+				set_collision_mask_value(1, false)  # pass through starting platform
+			else:
+				set_collision_mask_value(1, true)   # let lower platform catch player
+		else:
+			descend_start_y = -1.0
+			set_collision_mask_value(1, false)  # pass through platforms when ascending
 		velocity.y = -climb_input * CLIMB_SPEED
 		velocity.x = input_dir * SPEED * 0.5
 		if climb_areas <= 0 or (is_on_floor() and climb_input == 0):
 			is_climbing = false
+			descend_start_y = -1.0
 			set_collision_mask_value(1, true)
 	else:
 		set_collision_mask_value(1, true)
 		is_climbing = false
+		descend_start_y = -1.0
 		if not is_on_floor():
 			velocity.y += GRAVITY * delta
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():

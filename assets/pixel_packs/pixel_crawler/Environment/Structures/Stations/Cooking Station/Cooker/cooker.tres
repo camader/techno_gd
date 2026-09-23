@@ -1,0 +1,87 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Cooking Station/Cooker/Cooker_03-Sheet.png" id="1_t82mv"]
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Cooking Station/Cooker/Cooker_04-Sheet.png" id="2_a6byt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewdn5"]
+atlas = ExtResource("1_t82mv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v55v6"]
+atlas = ExtResource("1_t82mv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l6kl"]
+atlas = ExtResource("1_t82mv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjqrs"]
+atlas = ExtResource("1_t82mv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h45s"]
+atlas = ExtResource("1_t82mv")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tuvc"]
+atlas = ExtResource("1_t82mv")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k32e8"]
+atlas = ExtResource("2_a6byt")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d57b"]
+atlas = ExtResource("2_a6byt")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyjuo"]
+atlas = ExtResource("2_a6byt")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmk62"]
+atlas = ExtResource("2_a6byt")
+region = Rect2(240, 0, 80, 80)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewdn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v55v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6l6kl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjqrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h45s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tuvc")
+}],
+"loop": true,
+"name": &"cooker_03",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k32e8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d57b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyjuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmk62")
+}],
+"loop": true,
+"name": &"cooker_04",
+"speed": 10.0
+}]

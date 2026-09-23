@@ -8,15 +8,44 @@ const GRAVITY := 800.0
 var is_climbing := false
 var climb_areas: int = 0
 var descend_start_y := -1.0
+var is_dead := false
+
+# Level-configurable so the same controller works in the single-screen level 1
+# and the wide side-scrolling level 2.
+var max_x := 1280.0
+var spawn_point := Vector2(1100, 620)
+var can_shoot := false
+
+const BULLET_SCRIPT := preload("res://scripts/bullet.gd")
+
+signal died
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite
 
 func _ready() -> void:
 	_load_character_sprites()
+	anim_sprite.animation_finished.connect(_on_anim_finished)
 	anim_sprite.play("idle")
+
+# Characters backed by a prebuilt SpriteFrames resource (pixel-art sheets) instead of
+# the 256px per-frame render pipeline. scale/offset align the smaller art to the
+# collision box and ground.
+const SPRITE_FRAME_OVERRIDES := {
+	"volton": {
+		"res": "res://assets/characters/volton/volton.tres",
+		"scale": Vector2(1.4, 1.4),
+		"offset": Vector2(0, -17),
+	},
+}
 
 func _load_character_sprites() -> void:
 	var char_name: String = GameState.selected_character
+	if SPRITE_FRAME_OVERRIDES.has(char_name):
+		var cfg: Dictionary = SPRITE_FRAME_OVERRIDES[char_name]
+		anim_sprite.sprite_frames = load(cfg["res"])
+		anim_sprite.scale = cfg["scale"]
+		anim_sprite.offset = cfg["offset"]
+		return
 	var base_path := "res://assets/characters/%s/" % char_name
 	var sprite_frames := SpriteFrames.new()
 
@@ -46,6 +75,8 @@ func _load_character_sprites() -> void:
 	anim_sprite.sprite_frames = sprite_frames
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return
 	var input_dir := Input.get_axis("ui_left", "ui_right")
 	var climb_input := Input.get_axis("ui_down", "ui_up")
 
@@ -87,8 +118,8 @@ func _physics_process(delta: float) -> void:
 	elif input_dir > 0:
 		anim_sprite.flip_h = false
 
-	# Clamp to screen bounds
-	position.x = clamp(position.x, 0, 1280)
+	# Clamp to level bounds
+	position.x = clamp(position.x, 0, max_x)
 
 	# Fell off screen - respawn
 	if position.y > 800:
@@ -124,13 +155,40 @@ func _on_input_event() -> void:
 		is_climbing = true
 
 func _input(event: InputEvent) -> void:
+	if can_shoot and not is_dead and event is InputEventMouseButton \
+			and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		shoot(get_global_mouse_position())
 	if climb_areas > 0:
 		if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down"):
 			is_climbing = true
 
 func _respawn() -> void:
-	position = Vector2(1100, 620)
+	position = spawn_point
 	velocity = Vector2.ZERO
+	is_dead = false
+	anim_sprite.play("idle")
+
+func shoot(target: Vector2) -> void:
+	var facing := -18.0 if anim_sprite.flip_h else 18.0
+	var muzzle := global_position + Vector2(facing, -6)
+	var dir := target - muzzle
+	if dir.length() < 1.0:
+		return
+	dir = dir.normalized()
+	anim_sprite.flip_h = dir.x < 0
+	var b := Area2D.new()
+	b.set_script(BULLET_SCRIPT)
+	get_parent().add_child(b)
+	b.global_position = muzzle
+	b.velocity = dir * b.speed
 
 func play_death() -> void:
+	if is_dead:
+		return
+	is_dead = true
+	velocity = Vector2.ZERO
 	anim_sprite.play("death")
+
+func _on_anim_finished() -> void:
+	if anim_sprite.animation == "death":
+		died.emit()

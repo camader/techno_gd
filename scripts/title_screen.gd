@@ -11,6 +11,7 @@ var selection_border: ColorRect
 func _ready() -> void:
 	%NewGameButton.grab_focus()
 	_build_player_sprite()
+	_build_rockman_sprite()
 	_build_enemy_sprite()
 
 func _on_new_game_button_pressed() -> void:
@@ -249,50 +250,32 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _build_player_sprite() -> void:
-	var container := Node2D.new()
-	container.position = Vector2(180, 400)
-	var s := 4.0
-
-	var body := Polygon2D.new()
-	body.polygon = PackedVector2Array([
-		Vector2(-10 * s, -15 * s), Vector2(10 * s, -15 * s),
-		Vector2(10 * s, 15 * s), Vector2(-10 * s, 15 * s),
-	])
-	body.color = Color(0.2, 0.6, 1.0)
-	container.add_child(body)
-
-	var head := Polygon2D.new()
-	head.polygon = PackedVector2Array([
-		Vector2(-7 * s, -24 * s), Vector2(7 * s, -24 * s),
-		Vector2(7 * s, -15 * s), Vector2(-7 * s, -15 * s),
-	])
-	head.color = Color(0.9, 0.75, 0.6)
-	container.add_child(head)
-
-	var eye_l := Polygon2D.new()
-	eye_l.polygon = PackedVector2Array([
-		Vector2(-5 * s, -22 * s), Vector2(-2 * s, -22 * s),
-		Vector2(-2 * s, -19 * s), Vector2(-5 * s, -19 * s),
-	])
-	eye_l.color = Color(1, 1, 1)
-	container.add_child(eye_l)
-
-	var eye_r := Polygon2D.new()
-	eye_r.polygon = PackedVector2Array([
-		Vector2(2 * s, -22 * s), Vector2(5 * s, -22 * s),
-		Vector2(5 * s, -19 * s), Vector2(2 * s, -19 * s),
-	])
-	eye_r.color = Color(1, 1, 1)
-	container.add_child(eye_r)
+	var sprite := Sprite2D.new()
+	sprite.texture = load("res://assets/characters/volton_preview.png")
+	sprite.position = Vector2(180, 400)
+	sprite.scale = Vector2(0.6, 0.6)
+	add_child(sprite)
 
 	var label := Label.new()
-	label.text = "PLAYER"
-	label.position = Vector2(-36, 70)
+	label.text = "VOLTON"
+	label.position = Vector2(144, 470)
 	label.add_theme_color_override("font_color", Color(0.4, 0.8, 1.0))
 	label.add_theme_font_size_override("font_size", 16)
-	container.add_child(label)
+	add_child(label)
 
-	add_child(container)
+func _build_rockman_sprite() -> void:
+	var sprite := Sprite2D.new()
+	sprite.texture = load("res://assets/characters/rockman_preview.png")
+	sprite.position = Vector2(370, 400)
+	sprite.scale = Vector2(0.65, 0.65)
+	add_child(sprite)
+
+	var label := Label.new()
+	label.text = "ROCKMAN"
+	label.position = Vector2(330, 470)
+	label.add_theme_color_override("font_color", Color(0.7, 0.7, 0.8))
+	label.add_theme_font_size_override("font_size", 16)
+	add_child(label)
 
 func _build_enemy_sprite() -> void:
 	var sprite := Sprite2D.new()

@@ -513,6 +513,11 @@ func _spawn_obstacle() -> void:
 	obstacle_container.add_child(obstacle)
 
 func player_hit_by_obstacle() -> void:
+	if game_over or player.is_dead:
+		return
+	# Play the death animation, then resolve the hit once it finishes.
+	player.play_death()
+	await player.died
 	if game_over:
 		return
 	lives -= 1
@@ -626,5 +631,5 @@ func _on_goal_reached(body: Node) -> void:
 			add_child(cheese_label)
 
 		get_tree().create_timer(3.0).timeout.connect(
-			func(): get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+			func(): get_tree().change_scene_to_file("res://scenes/level_2.tscn")
 		)

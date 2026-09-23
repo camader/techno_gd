@@ -1,0 +1,45 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Sawmill/Level_2-Sheet.png" id="1_58k41"]
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Sawmill/Level_3-Sheet.png" id="2_a5gjc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kvu3"]
+atlas = ExtResource("1_58k41")
+region = Rect2(0, 0, 320, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqtxx"]
+atlas = ExtResource("1_58k41")
+region = Rect2(320, 0, 320, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0exjq"]
+atlas = ExtResource("2_a5gjc")
+region = Rect2(0, 0, 448, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkgkx"]
+atlas = ExtResource("2_a5gjc")
+region = Rect2(448, 0, 448, 640)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kvu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqtxx")
+}],
+"loop": true,
+"name": &"level_2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0exjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkgkx")
+}],
+"loop": true,
+"name": &"level_3",
+"speed": 10.0
+}]

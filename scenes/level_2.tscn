@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://level_2"]
+
+[ext_resource type="Script" path="res://scripts/level_2.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://player" path="res://scenes/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://pause_menu" path="res://scenes/pause_menu.tscn" id="3_pause"]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(120, 560)
+
+[node name="Barrels" type="Node2D" parent="."]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="PauseMenu" parent="UILayer" instance=ExtResource("3_pause")]

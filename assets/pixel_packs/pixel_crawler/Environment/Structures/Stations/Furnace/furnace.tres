@@ -1,0 +1,122 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Furnace/Bricks_01-Sheet.png" id="1_xeei0"]
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Furnace/Bricks_02-Sheet.png" id="2_vcbbs"]
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Furnace/Bricks_03-Sheet.png" id="3_nkq4q"]
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Furnace/Iron_01-Sheet.png" id="4_vfd26"]
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Furnace/Iron_02-Sheet.png" id="5_ppjal"]
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Furnace/Iron_03-Sheet.png" id="6_edv5d"]
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Furnace/Stone_01-Sheet.png" id="7_sktfk"]
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Furnace/Stone_02-Sheet.png" id="8_dw2qn"]
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Furnace/Stone_03-Sheet.png" id="9_t2q2m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amjwb"]
+atlas = ExtResource("1_xeei0")
+region = Rect2(0, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltbcj"]
+atlas = ExtResource("2_vcbbs")
+region = Rect2(0, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nivvm"]
+atlas = ExtResource("3_nkq4q")
+region = Rect2(0, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boaxl"]
+atlas = ExtResource("4_vfd26")
+region = Rect2(0, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dysse"]
+atlas = ExtResource("5_ppjal")
+region = Rect2(0, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3yq7"]
+atlas = ExtResource("6_edv5d")
+region = Rect2(0, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75ig2"]
+atlas = ExtResource("7_sktfk")
+region = Rect2(0, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qv81"]
+atlas = ExtResource("8_dw2qn")
+region = Rect2(0, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2olun"]
+atlas = ExtResource("9_t2q2m")
+region = Rect2(0, 0, 96, 128)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amjwb")
+}],
+"loop": true,
+"name": &"bricks_01",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltbcj")
+}],
+"loop": true,
+"name": &"bricks_02",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nivvm")
+}],
+"loop": true,
+"name": &"bricks_03",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boaxl")
+}],
+"loop": true,
+"name": &"iron_01",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dysse")
+}],
+"loop": true,
+"name": &"iron_02",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3yq7")
+}],
+"loop": true,
+"name": &"iron_03",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75ig2")
+}],
+"loop": true,
+"name": &"stone_01",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qv81")
+}],
+"loop": true,
+"name": &"stone_02",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2olun")
+}],
+"loop": true,
+"name": &"stone_03",
+"speed": 10.0
+}]

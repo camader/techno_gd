@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Cooking Station/Butchery/Butchery_01-Sheet.png" id="1_8j53x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21lvi"]
+atlas = ExtResource("1_8j53x")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21lvi")
+}],
+"loop": true,
+"name": &"butchery_01",
+"speed": 10.0
+}]

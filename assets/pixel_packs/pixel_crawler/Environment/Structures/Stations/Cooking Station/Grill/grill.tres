@@ -1,0 +1,148 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Cooking Station/Grill/Grill_01-Sheet.png" id="1_8lttv"]
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Cooking Station/Grill/Grill_02-Sheet.png" id="2_hiuda"]
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Cooking Station/Grill/Grill_03-Sheet.png" id="3_42x7d"]
+[ext_resource type="Texture2D" path="res://assets/pixel_packs/pixel_crawler/Environment/Structures/Stations/Cooking Station/Grill/Grill_04-Sheet.png" id="4_jq12e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_477uy"]
+atlas = ExtResource("1_8lttv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny4up"]
+atlas = ExtResource("1_8lttv")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6e4dc"]
+atlas = ExtResource("1_8lttv")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ehhi"]
+atlas = ExtResource("1_8lttv")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80dur"]
+atlas = ExtResource("2_hiuda")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26r7f"]
+atlas = ExtResource("2_hiuda")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmb6x"]
+atlas = ExtResource("2_hiuda")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c3sf"]
+atlas = ExtResource("2_hiuda")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0lb8"]
+atlas = ExtResource("3_42x7d")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_si8h3"]
+atlas = ExtResource("3_42x7d")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhh3g"]
+atlas = ExtResource("3_42x7d")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb8j5"]
+atlas = ExtResource("3_42x7d")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c5rb"]
+atlas = ExtResource("4_jq12e")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xthxv"]
+atlas = ExtResource("4_jq12e")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wredb"]
+atlas = ExtResource("4_jq12e")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g52jb"]
+atlas = ExtResource("4_jq12e")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6qsy"]
+atlas = ExtResource("4_jq12e")
+region = Rect2(256, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_477uy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ny4up")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6e4dc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ehhi")
+}],
+"loop": true,
+"name": &"grill_01",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80dur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26r7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmb6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c3sf")
+}],
+"loop": true,
+"name": &"grill_02",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0lb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_si8h3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhh3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb8j5")
+}],
+"loop": true,
+"name": &"grill_03",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0c5rb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xthxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wredb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g52jb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6qsy")
+}],
+"loop": true,
+"name": &"grill_04",
+"speed": 10.0
+}]

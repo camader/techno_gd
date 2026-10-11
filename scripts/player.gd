@@ -156,11 +156,16 @@ func _on_input_event() -> void:
 
 func _input(event: InputEvent) -> void:
 	if can_shoot and not is_dead and event is InputEventMouseButton \
-			and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			and event.pressed and event.button_index == MOUSE_BUTTON_LEFT \
+			and not _on_touch_button(event.position):
 		shoot(get_global_mouse_position())
 	if climb_areas > 0:
 		if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down"):
 			is_climbing = true
+
+func _on_touch_button(screen_pos: Vector2) -> bool:
+	var controls := get_tree().get_first_node_in_group("touch_controls")
+	return controls != null and controls.covers(screen_pos)
 
 func _respawn() -> void:
 	position = spawn_point

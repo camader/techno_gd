@@ -10,6 +10,7 @@ var selection_border: ColorRect
 
 func _ready() -> void:
 	%NewGameButton.grab_focus()
+	%TouchControlsToggle.set_pressed_no_signal(GameState.touch_controls)
 	_build_player_sprite()
 	_build_rockman_sprite()
 	_build_enemy_sprite()
@@ -19,6 +20,9 @@ func _on_new_game_button_pressed() -> void:
 
 func _on_high_scores_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/high_scores.tscn")
+
+func _on_touch_controls_toggled(enabled: bool) -> void:
+	GameState.set_touch_controls(enabled)
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()

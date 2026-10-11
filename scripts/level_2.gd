@@ -8,6 +8,7 @@ extends Node2D
 @onready var barrels: Node2D = $Barrels
 @onready var ui_layer: CanvasLayer = $UILayer
 
+const TOUCH_CONTROLS := preload("res://scripts/touch_controls.gd")
 const LEVEL_WIDTH := 4200.0
 const GROUND_TOP := 640.0
 const SPAWN := Vector2(120, 560)
@@ -37,6 +38,8 @@ func _ready() -> void:
 	_build_techno()
 	_build_goal()
 	_build_hud()
+	if GameState.touch_controls:
+		add_child(TOUCH_CONTROLS.new())
 
 func _setup_player() -> void:
 	player.position = SPAWN

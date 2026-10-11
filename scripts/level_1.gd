@@ -3,6 +3,8 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 @onready var obstacle_container: Node2D = $Obstacles
 
+const TOUCH_CONTROLS := preload("res://scripts/touch_controls.gd")
+
 var spawn_timer := 0.0
 const SPAWN_INTERVAL := 3.08
 
@@ -44,6 +46,8 @@ func _ready() -> void:
 	_build_lives_display()
 	_build_timer_display()
 	_build_score_display()
+	if GameState.touch_controls:
+		add_child(TOUCH_CONTROLS.new())
 
 func _physics_process(delta: float) -> void:
 	if game_over:
